@@ -1,13 +1,13 @@
 package dominio.dom;
 
 import javax.jdo.annotations.Column;
-import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
-
+import javax.jdo.annotations.Unique;
 import org.apache.isis.applib.annotation.DomainObject;
 
 @DomainObject(bounded=true, objectType = "DIRECTOR")
-@PersistenceCapable(identityType=IdentityType.DATASTORE)
+@PersistenceCapable
+@Unique(name="Director_key", members = {"nombre"})
 public class Director {
 	String nombre;
 	String numero;
