@@ -7,6 +7,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import dominio.dom.Computadora;
 import dominio.dom.Director;
+import dominio.dom.Impresora;
 import dominio.dom.Sector;
 
 @DomainService
@@ -32,7 +33,7 @@ public class CargaServicio
 			c.setDetalle(detalle);
 			c.setDisco(disco);
 			c.setIp(ip);
-			c.setnSerie(nSerie);
+//			c.setnSerie(nSerie);
 			c.setNombre(nombre);
 			c.setRam(ram);
 			c.setTeamViewer(teamViewer);
@@ -57,7 +58,7 @@ public class CargaServicio
 	 		return d;
 	 	}
 	    
-	    @MemberOrder(sequence = "3")
+	    @MemberOrder(sequence = "4")
 	    public Sector cargarSector
 	    (
 	    		@ParameterLayout(named="Nombre") final String nombre,
@@ -74,6 +75,26 @@ public class CargaServicio
 	    	container.persistIfNotAlready(s);
 	    	return s;
 	    }
+	    
+	    
+	    
+	    @MemberOrder(sequence = "3")
+		public Impresora cargarImpresora
+		(
+				 @ParameterLayout(named="Numero de serie")final String nSerie,
+				 @ParameterLayout(named="Nombre")final String nombre,
+				 @ParameterLayout(named="Detalle")final String detalle,
+				 @ParameterLayout(named="Sector")final Sector sector
+		)
+		{
+			final Impresora c= container.newTransientInstance(Impresora.class);
+			c.setDetalle(detalle);
+//			c.setnSerie(nSerie);
+			c.setNombre(nombre);
+			c.setSector(sector);
+			container.persistIfNotAlready(c);
+			return c;
+		}
 	 
 	 
 	   @javax.inject.Inject 

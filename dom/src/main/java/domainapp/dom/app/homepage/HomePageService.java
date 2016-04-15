@@ -35,7 +35,7 @@ public class HomePageService {
     @Action(
             semantics = SemanticsOf.SAFE
     )
-    @HomePage
+//    @HomePage
     public HomePageViewModel homePage() {
         return container.injectServicesInto(new HomePageViewModel());
     }
