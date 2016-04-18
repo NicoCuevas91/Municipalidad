@@ -1,26 +1,22 @@
 package dominio.dom.serv;
 
-import java.util.Calendar;
-import javax.jdo.annotations.Column;
-import javax.jdo.annotations.DatastoreIdentity;
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.PersistenceCapable;
 
+import java.util.Date;
+import javax.jdo.annotations.Column;
+import javax.jdo.annotations.PersistenceCapable;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
 import dominio.dom.Computadora;
 
 @DomainObject
-@DatastoreIdentity(strategy=IdGeneratorStrategy.INCREMENT,column="id")
-@PersistenceCapable(identityType=IdentityType.DATASTORE)
+@PersistenceCapable
 public class OrdenServicioComputadora {
 	
 	String id;
 	Computadora computadora;
-	Calendar fechaIngreso;
-	Calendar fechaSalida;
+	Date fechaIngreso;
+	Date fechaSalida;
 	Estado estado;
 	String causa;
 	String tecnico;
@@ -48,19 +44,19 @@ public class OrdenServicioComputadora {
 	
 	@Column(allowsNull="false")
 	@MemberOrder(sequence= "3",name="Orden")
-	public Calendar getFechaIngreso() {
+	public Date getFechaIngreso() {
 		return fechaIngreso;
 	}
-	public void setFechaIngreso(Calendar fechaIngreso) {
+	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 	
 	@Column(allowsNull="true")
 	@MemberOrder(sequence= "4",name="Orden")
-	public Calendar getFechaSalida() {
+	public Date getFechaSalida() {
 		return fechaSalida;
 	}
-	public void setFechaSalida(Calendar fechaSalida) {
+	public void setFechaSalida(Date fechaSalida) {
 		this.fechaSalida = fechaSalida;
 	}
 	

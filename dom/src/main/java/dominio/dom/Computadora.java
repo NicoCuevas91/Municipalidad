@@ -3,14 +3,12 @@ package dominio.dom;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Unique;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
 
 @DomainObject(bounded=true,objectType = "COMPUTADORA")
 @PersistenceCapable(identityType=IdentityType.DATASTORE)
-@Unique(name="Computadora_key", members = {"nSerie"})
 public class Computadora 
 {
 	

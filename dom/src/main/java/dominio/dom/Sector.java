@@ -2,12 +2,12 @@ package dominio.dom;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Unique;
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Title;
 
 @DomainObject(bounded=true, objectType = "SECTOR")
 @PersistenceCapable
-@Unique(name="Sector_key", members = {"nombre"})
 public class Sector {
 
 	String nombre;
@@ -16,6 +16,8 @@ public class Sector {
 	String email;
 	
 	@Column(allowsNull="false")
+	@Title
+	@MemberOrder(sequence= "1",name="Sector")
 	public String getNombre() {
 		return nombre;
 	}
@@ -24,6 +26,7 @@ public class Sector {
 	}
 	
 	@Column(allowsNull="false")
+	@MemberOrder(sequence= "2",name="Sector")
 	public Director getDirector() {
 		return director;
 	}
@@ -32,6 +35,7 @@ public class Sector {
 	}
 	
 	@Column(allowsNull="false")
+	@MemberOrder(sequence= "3",name="Sector")
 	public String getNumero() {
 		return numero;
 	}
@@ -40,6 +44,7 @@ public class Sector {
 	}
 	
 	@Column(allowsNull= "true")
+	@MemberOrder(sequence= "4",name="Sector")
 	public String getEmail() {
 		return email;
 	}

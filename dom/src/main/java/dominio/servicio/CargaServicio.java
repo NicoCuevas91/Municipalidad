@@ -33,7 +33,7 @@ public class CargaServicio
 			c.setDetalle(detalle);
 			c.setDisco(disco);
 			c.setIp(ip);
-//			c.setnSerie(nSerie);
+			c.setId(nSerie);
 			c.setNombre(nombre);
 			c.setRam(ram);
 			c.setTeamViewer(teamViewer);
