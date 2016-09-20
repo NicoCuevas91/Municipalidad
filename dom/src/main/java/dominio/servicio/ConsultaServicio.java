@@ -30,6 +30,10 @@ public class ConsultaServicio {
 		return container.allInstances(Impresora.class);
 	}
 	
+	public Computadora buscarComputadora(final Computadora a){
+	return a;
+	}
+	
 	
 	
 	   @javax.inject.Inject 
