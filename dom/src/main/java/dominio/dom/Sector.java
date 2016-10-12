@@ -1,13 +1,15 @@
 package dominio.dom;
 
 import javax.jdo.annotations.Column;
+import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
 
 @DomainObject(bounded=true, objectType = "SECTOR")
-@PersistenceCapable
+@PersistenceCapable(identityType=IdentityType.DATASTORE)
+
 public class Sector {
 
 	String nombre;
@@ -51,6 +53,5 @@ public class Sector {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 	
 }

@@ -9,7 +9,9 @@ import org.apache.isis.applib.annotation.Title;
 
 @DomainObject(bounded=true,objectType = "IMPRESORA")
 @PersistenceCapable(identityType=IdentityType.DATASTORE)
+
 public class Impresora {
+	
 	String id;
 	String nombre;
 	String Detalle;

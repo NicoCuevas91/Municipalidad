@@ -62,6 +62,8 @@ public class ServicioEliminar {
 		}
 		return bandera;
 	}
+	
+	
 		
 	   @javax.inject.Inject 
 	    DomainObjectContainer container;

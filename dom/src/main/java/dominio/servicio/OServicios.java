@@ -26,17 +26,19 @@ public class OServicios
 			)
 	{
 		OrdenServicioComputadora os = container.newTransientInstance(OrdenServicioComputadora.class);
+		
 		os.setCausa(causa);
 		os.setId(id);
 		os.setEstado(Estado.Ingreso);
 		os.setTecnico(tecnico);
 		os.setFechaIngreso(fechaIngreso);
 		os.setComputadora(computadora);
+		
 		container.persistIfNotAlready(os);
 		
 		return os;
 	}
-	
+
 	
 	
 	

@@ -9,10 +9,10 @@ import org.apache.isis.applib.annotation.Title;
 
 @DomainObject(bounded=true,objectType = "COMPUTADORA")
 @PersistenceCapable(identityType=IdentityType.DATASTORE)
+
 public class Computadora 
 {
-	
-	
+
 	String id;
 	String nombre;
 	String Detalle;

@@ -13,6 +13,7 @@ import dominio.dom.Sector;
 @DomainServiceLayout(menuOrder = "3", named= "Consulas")
 public class ConsultaServicio {
 
+
 	public List<Director> listarDirectores()
 	{
 		return container.allInstances(Director.class);
@@ -33,7 +34,6 @@ public class ConsultaServicio {
 	public Computadora buscarComputadora(final Computadora a){
 	return a;
 	}
-	
 	
 	
 	   @javax.inject.Inject 

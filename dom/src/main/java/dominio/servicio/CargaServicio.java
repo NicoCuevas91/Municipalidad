@@ -14,6 +14,7 @@ import dominio.dom.Sector;
 @DomainServiceLayout(menuOrder = "2", named= "Carga de datos")
 public class CargaServicio
 {
+	
 	    @MemberOrder(sequence = "1")
 		public Computadora cargarComputadora
 		(
@@ -58,8 +59,11 @@ public class CargaServicio
 	 		return d;
 	 	}
 	    
+	    
 	    @MemberOrder(sequence = "4")
 	    public Sector cargarSector
+	    
+	    
 	    (
 	    		@ParameterLayout(named="Nombre") final String nombre,
 	    		@ParameterLayout(named="Director") final Director director,
@@ -74,9 +78,10 @@ public class CargaServicio
 	    	s.setNumero(numero);
 	    	container.persistIfNotAlready(s);
 	    	return s;
+	    	
+	    	
 	    }
-	    
-	    
+ 
 	    
 	    @MemberOrder(sequence = "3")
 		public Impresora cargarImpresora
@@ -99,4 +104,6 @@ public class CargaServicio
 	 
 	   @javax.inject.Inject 
 	    DomainObjectContainer container;
+	    
+	    
 }
