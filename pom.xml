@@ -335,11 +335,6 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>informatica-fixture</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
                 <artifactId>informatica-webapp</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
