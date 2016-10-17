@@ -19,7 +19,8 @@ public class OrdenServicioComputadora {
 	Date fechaSalida;
 	Estado estado;
 	String causa;
-	String tecnico;
+	boolean cables;
+	Tecnicos tecnico;
 	
 	
 	@Column(allowsNull="false")
@@ -80,11 +81,19 @@ public class OrdenServicioComputadora {
 	
 	@Column(allowsNull="true")
 	@MemberOrder(sequence= "7",name="Orden")
-	public String getTecnico() {
+	public Tecnicos getTecnico() {
 		return tecnico;
 	}
-	public void setTecnico(String tecnico) {
+	public void setTecnico(Tecnicos tecnico) {
 		this.tecnico = tecnico;
+		
+	}
+	@MemberOrder(sequence= "8",name="Orden")
+	public boolean isCables() {
+		return cables;
+	}
+	public void setCables(boolean cables) {
+		this.cables = cables;
 	}
 	
 	
