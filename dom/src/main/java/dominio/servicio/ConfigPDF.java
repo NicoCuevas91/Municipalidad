@@ -3,6 +3,8 @@ package dominio.servicio;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.apache.isis.applib.annotation.DomainService;
@@ -68,12 +70,16 @@ public class ConfigPDF
         PDDocument pdfDocument = PDDocument.load(new ByteArrayInputStream(pdfAsBytes));
         PDAcroForm pdfForm = pdfDocument.getDocumentCatalog().getAcroForm();
 		List<PDField> fields = pdfForm.getFields();
+		
 		String cables= "No";
 		if(order.isCables()){
 			cables="Si";
 		}
 		String pc= order.getComputadora().getId();
-		String fecha= order.getFechaIngreso().toString();
+		
+		Calendar fechaSalida = new GregorianCalendar();
+		fechaSalida.setTime(order.getFechaIngreso() );
+		String fecha =  Integer.toString(fechaSalida.get(Calendar.DAY_OF_MONTH))+"/"+Integer.toString(fechaSalida.get(Calendar.MONTH))+"/"+Integer.toString(fechaSalida.get(Calendar.YEAR));
 		String causa= order.getCausa();
 		String sector= order.getComputadora().getSector().getNombre();
 		String tecnico = order.getTecnico().toString();
