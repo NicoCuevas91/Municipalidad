@@ -25,6 +25,7 @@ public class CargaServicio
 				 @ParameterLayout(named="CPU")final String cpu,
 				 @ParameterLayout(named="Ram")final String ram,
 				 @ParameterLayout(named="Disco")final String disco,
+				 @ParameterLayout(named="Sistema Operativo")final String so,
 				 @ParameterLayout(named="IP")final String ip,
 				 @ParameterLayout(named="Team viewer")final String teamViewer
 		)
@@ -36,9 +37,11 @@ public class CargaServicio
 			c.setIp(ip);
 			c.setId(nSerie);
 			c.setNombre(nombre);
+			c.setSistemaOperativo(so);
 			c.setRam(ram);
 			c.setTeamViewer(teamViewer);
 			c.setSector(sector);
+
 			container.persistIfNotAlready(c);
 			return c;
 		}

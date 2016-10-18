@@ -9,20 +9,30 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
 import dominio.dom.Computadora;
 
-@DomainObject
+
+
+@javax.jdo.annotations.Queries
+({
+    @javax.jdo.annotations.Query(name = "buscarPorComputadora", language = "JDOQL",value = "SELECT "+ "FROM dominio.dom.serv.ordenserviciocomputadora "+ "WHERE computadora == :id"),
+    @javax.jdo.annotations.Query(name = "buscarPorEstado", language = "JDOQL",value = "SELECT "+ "FROM dominio.dom.serv.ordenserviciocomputadora "+ "WHERE estado == :estado")
+})
+
+
 @PersistenceCapable
+@DomainObject(bounded=true,objectType = "ORDEN")
 public class OrdenServicioComputadora {
 	
-	String id;
-	Computadora computadora;
-	Date fechaIngreso;
-	Date fechaSalida;
-	Estado estado;
-	String causa;
-	boolean cables;
-	Tecnicos tecnico;
+	private String id;
+	private Computadora computadora;
+	private Date fechaIngreso;
+	private Date fechaSalida;
+	private Estado estado;
+	private String causa;
+	private boolean cables;
+	private Tecnicos tecnico;
+	private String informe;
 	
-	
+
 	@Column(allowsNull="false")
 	@MemberOrder(sequence= "1",name="Orden")
 	@Title
@@ -94,6 +104,15 @@ public class OrdenServicioComputadora {
 	}
 	public void setCables(boolean cables) {
 		this.cables = cables;
+	}
+	
+	@Column(allowsNull="true")
+	@MemberOrder(sequence= "9",name="Orden")
+	public String getInforme() {
+		return informe;
+	}
+	public void setInforme(String informe) {
+		this.informe = informe;
 	}
 	
 	
