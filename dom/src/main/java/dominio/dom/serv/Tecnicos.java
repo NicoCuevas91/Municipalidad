@@ -2,5 +2,11 @@ package dominio.dom.serv;
 
 public enum Tecnicos 
 {	
-	NicolasCuevas, GabrielSoto
+	NicolasCuevas
+	{
+        @Override
+        public List<String> subcategories() {
+            return Arrays.asList(null, Subcategory.OPEN_SOURCE, Subcategory.CONSULTING, Subcategory.EDUCATION, Subcategory.MARKETING);
+        }
+    }, GabrielSoto
 }

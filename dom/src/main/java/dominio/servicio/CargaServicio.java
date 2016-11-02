@@ -16,7 +16,7 @@ public class CargaServicio
 {
 	
 	    @MemberOrder(sequence = "1")
-		public Computadora cargarComputadora
+		public Computadora newCargarComputadora
 		(
 				 @ParameterLayout(named="Numero de serie")final String nSerie,
 				 @ParameterLayout(named="Nombre")final String nombre,

@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.PersistenceCapable;
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.MemberGroupLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
 import dominio.dom.Computadora;
@@ -20,7 +21,9 @@ import dominio.dom.Computadora;
 
 @PersistenceCapable
 @DomainObject(bounded=true,objectType = "ORDEN")
+@MemberGroupLayout(columnSpans={4,4,4,8},middle="Orden")
 public class OrdenServicioComputadora {
+	
 	
 	private String id;
 	private Computadora computadora;
@@ -33,7 +36,7 @@ public class OrdenServicioComputadora {
 	private String informe;
 	
 
-	@Column(allowsNull="false")
+	@Column(allowsNull="true")
 	@MemberOrder(sequence= "1",name="Orden")
 	@Title
 	public String getId() {

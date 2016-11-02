@@ -8,7 +8,6 @@ import javax.jdo.annotations.PersistenceCapable;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.CollectionLayout;
 import org.apache.isis.applib.annotation.DomainObject;
-import org.apache.isis.applib.annotation.MemberGroupLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.RenderType;
 import org.apache.isis.applib.annotation.Title;
@@ -16,9 +15,14 @@ import org.apache.isis.applib.query.QueryDefault;
 import dominio.dom.serv.OrdenServicioComputadora;
 
 
+@javax.jdo.annotations.Queries
+({
+ 
+    @javax.jdo.annotations.Query(name = "buscarPorSector", language = "JDOQL",value = "SELECT "+ "FROM dominio.dom.computadora "+ "WHERE sector == :sector")
+})
+
 @DomainObject(bounded=true,objectType = "COMPUTADORA")
 @PersistenceCapable(identityType=IdentityType.DATASTORE)
-@MemberGroupLayout( columnSpans= {4,0,0,8})
 public class Computadora 
 {
 
