@@ -8,6 +8,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.CollectionLayout;
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.MemberGroupLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.RenderType;
 import org.apache.isis.applib.annotation.Title;
@@ -23,6 +24,7 @@ import dominio.dom.serv.OrdenServicioComputadora;
 
 @DomainObject(bounded=true,objectType = "COMPUTADORA")
 @PersistenceCapable(identityType=IdentityType.DATASTORE)
+@MemberGroupLayout(columnSpans={4,4,4,8},right="Informacion",left="Computadora" )
 public class Computadora 
 {
 
@@ -36,6 +38,7 @@ public class Computadora
 	private String ip;
 	private String sistemaOperativo;
 	private String teamViewer;
+	private String entregada;
 	
 	
 	@Column(allowsNull="false")
@@ -129,6 +132,14 @@ public class Computadora
 		this.teamViewer = teamViewer;
 	}	
 	
+	@Column(allowsNull="true")
+	@MemberOrder(sequence= "1",name="Informacion")
+	public String getEntregada() {
+		return entregada;
+	}
+	public void setEntregada(String entregada) {
+		this.entregada = entregada;
+	}
 	
 	@MemberOrder(sequence= "1",name="Historial")
 	@CollectionLayout(render = RenderType.EAGERLY)

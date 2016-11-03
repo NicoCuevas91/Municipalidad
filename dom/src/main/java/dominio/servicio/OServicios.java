@@ -25,6 +25,7 @@ public class OServicios
 			@ParameterLayout(named="Computadora")final Computadora computadora,
 			@ParameterLayout(named="Causa",multiLine = 2 ) final String causa,
 			@ParameterLayout(named="Tecnico") final Tecnicos tecnico,
+			@ParameterLayout(named="Quien la ingresa") final String ingreso,
 			@ParameterLayout(named="Ingresa con cables") final boolean cables
 			)
 	{
@@ -34,6 +35,8 @@ public class OServicios
 		os.setEstado(Estado.Ingreso);
 		os.setTecnico(tecnico);
 		os.setFechaIngreso( new Date());
+		os.setIngresa(ingreso);
+		computadora.setEntregada("Se encuentra en informatica");
 		os.setComputadora(computadora);		
 		os.setCables(cables);
 		container.persistIfNotAlready(os);
@@ -44,9 +47,11 @@ public class OServicios
 	@MemberOrder(sequence = "2")
 	public OrdenServicioComputadora ordenSalida(@ParameterLayout(named="Orden") final OrdenServicioComputadora id,
 												@ParameterLayout(named="Nuevo Estado") final Estado estado,
+												@ParameterLayout(named="Quien la retira") final String retira,
 												@ParameterLayout(named="Informe",multiLine= 2) final String informe){
 		id.setEstado(estado);
 		id.setInforme(informe);
+		id.setRetira(retira);
 		id.setFechaSalida(new Date());
 		
 		return id;

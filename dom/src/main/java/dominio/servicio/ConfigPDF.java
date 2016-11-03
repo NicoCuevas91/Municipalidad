@@ -34,7 +34,7 @@ public class ConfigPDF
      */
     @PostConstruct
     public void init() throws IOException {
-        pdfAsBytes = Resources.toByteArray(Resources.getResource(this.getClass(), "salida.pdf"));
+        pdfAsBytes = Resources.toByteArray(Resources.getResource(this.getClass(), "ingreso.pdf"));
     }
     
     /*
@@ -46,7 +46,7 @@ public class ConfigPDF
     public Blob imprimirPDF(
             final OrdenServicioComputadora order) throws Exception {
 
-        pdfAsBytes = Resources.toByteArray(Resources.getResource(this.getClass(), "salida.pdf"));
+        pdfAsBytes = Resources.toByteArray(Resources.getResource(this.getClass(), "ingreso.pdf"));
         
         try (PDDocument pdfDocument = loadAndPopulateTemplate(order)) {
 
@@ -138,6 +138,7 @@ public class ConfigPDF
 				case "txtTecnico": field.setValue(tecnico);break;
 				case "txtCables": field.setValue(cables);break;				
 				
+				case "txtId2": field.setValue(order.getId());break;
 				case "txtPc2": field.setValue(pc);break;
 				case "txtFecha2": field.setValue(fecha);break;
 				case "txtCausa2": field.setValue(causa);break;
@@ -171,6 +172,7 @@ public class ConfigPDF
 		String sector= order.getComputadora().getSector().getNombre();
 		String tecnico = order.getTecnico().toString();
 		String estado = order.getEstado().toString();
+		String retira = order.getRetira();
 		
         for (PDField field : fields)
         {
@@ -183,13 +185,17 @@ public class ConfigPDF
 				case "txtTecnico": field.setValue(tecnico);break;
 				case "txtInforme": field.setValue(informe);break;
 				case "txtEstado": field.setValue(estado);break;
+				case "txtRetira": field.setValue(retira);break;
+			
 				
+				case "txtId2": field.setValue(order.getId());break;
 				case "txtPc2": field.setValue(pc);break;
 				case "txtFecha2": field.setValue(fecha);break;
 				case "txtSector2": field.setValue(sector);break;
 				case "txtTecnico2": field.setValue(tecnico);break;
 				case "txtInforme2": field.setValue(informe);break;
 				case "txtEstado2": field.setValue(estado);break;
+				case "txtRetira2" : field.setValue(retira);break;
 		
 			}
 

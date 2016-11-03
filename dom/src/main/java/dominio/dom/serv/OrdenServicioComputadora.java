@@ -33,6 +33,8 @@ public class OrdenServicioComputadora {
 	private String causa;
 	private boolean cables;
 	private Tecnicos tecnico;
+	private String retira;
+	private String ingresa;
 	private String informe;
 	
 
@@ -111,6 +113,23 @@ public class OrdenServicioComputadora {
 	
 	@Column(allowsNull="true")
 	@MemberOrder(sequence= "9",name="Orden")
+	public String getRetira() {
+		return retira;
+	}
+	public void setRetira(String retira) {
+		this.retira = retira;
+	}
+	
+	@Column(allowsNull="true")
+	@MemberOrder(sequence= "10",name="Orden")
+	public String getIngresa() {
+		return ingresa;
+	}
+	public void setIngresa(String ingresa) {
+		this.ingresa = ingresa;
+	}
+	@Column(allowsNull="true")
+	@MemberOrder(sequence= "11",name="Orden")
 	public String getInforme() {
 		return informe;
 	}

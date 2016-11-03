@@ -13,7 +13,7 @@ import dominio.dom.Sector;
 import dominio.dom.serv.Informe;
 
 @DomainService
-@DomainServiceLayout(menuOrder = "3", named= "Consulas")
+@DomainServiceLayout(menuOrder = "3", named= "Consultas")
 public class ConsultaServicio {
 
 
