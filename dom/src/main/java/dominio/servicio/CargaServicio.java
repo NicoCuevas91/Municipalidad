@@ -97,7 +97,7 @@ public class CargaServicio
 		{
 			final Impresora c= container.newTransientInstance(Impresora.class);
 			c.setDetalle(detalle);
-//			c.setnSerie(nSerie);
+			c.setId(nSerie);
 			c.setNombre(nombre);
 			c.setSector(sector);
 			container.persistIfNotAlready(c);
