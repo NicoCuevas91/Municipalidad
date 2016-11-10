@@ -6,6 +6,22 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
 
+
+
+
+
+
+
+
+
+
+
+@javax.jdo.annotations.Queries
+({
+ 
+    @javax.jdo.annotations.Query(name = "buscarPorSector", language = "JDOQL",value = "SELECT "+ "FROM dominio.dom.impresora "+ "WHERE sector == :sector")
+})
+
 @DomainObject(bounded=true,objectType = "IMPRESORA")
 @PersistenceCapable
 public class Impresora {

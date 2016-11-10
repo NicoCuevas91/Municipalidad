@@ -41,10 +41,14 @@ public class ConsultaServicio {
 	public List<Computadora> computadorasPorSector (final Sector a){
 		return container.allMatches(new QueryDefault<>(Computadora.class,"buscarPorSector","sector", a));
 	}
+	
+	public List<Impresora> impresorasPorSector (final Sector a){
+		return container.allMatches(new QueryDefault<>(Impresora.class,"buscarPorSector","sector", a));
+	}
+	
 	public List<Informe> cantidadDeMaquinas(){
 		List<Informe> informe = new ArrayList<>();
 		List<Computadora> compus = container.allInstances(Computadora.class);
-//		int aux= 0;
 		
 		Informe total= new Informe();
 		total.setSector("Total");
@@ -57,6 +61,29 @@ public class ConsultaServicio {
 			auxI.setSector(s.getNombre());
 			compus = container.allMatches(new QueryDefault<>(Computadora.class,"buscarPorSector","sector", s));
 			auxI.setCantidad(compus.size());
+			informe.add(auxI);
+		}		
+		
+		informe.add(total);
+		return informe;
+	}
+	
+	
+	public List<Informe> cantidadDeImpresoras(){
+		List<Informe> informe = new ArrayList<>();
+		List<Impresora> impresora = container.allInstances(Impresora.class);
+		
+		Informe total= new Informe();
+		total.setSector("Total");
+		total.setCantidad(impresora.size());
+		
+		Informe auxI = null;
+		List<Sector> sectores = container.allInstances(Sector.class);
+		for (Sector s: sectores){
+			auxI= new Informe();
+			auxI.setSector(s.getNombre());
+			impresora = container.allMatches(new QueryDefault<>(Impresora.class,"buscarPorSector","sector", s));
+			auxI.setCantidad(impresora.size());
 			informe.add(auxI);
 		}		
 		
