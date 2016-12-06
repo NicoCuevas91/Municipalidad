@@ -18,10 +18,14 @@ import dominio.dom.serv.Tecnicos;
 @DomainServiceLayout(menuOrder = "1", named= "Orden de servicio")
 public class OServicios
 {
+	@javax.inject.Inject 
+	DomainObjectContainer container;
+	
+
 	
 	@MemberOrder(sequence = "1")
 	public OrdenServicioComputadora ingresarOrden(
-			@ParameterLayout(named="ID") final String id,
+			@ParameterLayout(named="ID")   final String id,
 			@ParameterLayout(named="Computadora")final Computadora computadora,
 			@ParameterLayout(named="Causa",multiLine = 2 ) final String causa,
 			@ParameterLayout(named="Tecnico") final Tecnicos tecnico,
@@ -117,6 +121,5 @@ public class OServicios
 	
 
 	
-	   @javax.inject.Inject 
-	    DomainObjectContainer container;
+
 }
