@@ -64,6 +64,18 @@ public class OServicios
 		return orden;
 	}
 	
+	public boolean hideBuscar(
+			@ParameterLayout(named="Orden de servicio") final OrdenServicioComputadora orden
+			){
+		
+		boolean bandera = true;		
+		if(orden == null){
+			bandera = false;
+		}
+		return bandera;
+	}
+	
+	
 	@MemberOrder(sequence = "4")
 	public List<OrdenServicioComputadora> listarOrdenesDeServicios(){
 		List<OrdenServicioComputadora> salida = container.allInstances(OrdenServicioComputadora.class);
@@ -87,6 +99,23 @@ public class OServicios
 		return container.allMatches(new QueryDefault<>(OrdenServicioComputadora.class,"buscarPorComputadora","id", comp));
 	}
 	
+	
+	public Computadora borrar (OrdenServicioComputadora a){
+		Computadora aux = a.getComputadora();
+		container.remove(a);		
+		return aux;
+	}
+	
+	public boolean hideBorrar (OrdenServicioComputadora a){
+		boolean bandera = false;		
+		if(a == null){
+			bandera = true;
+		}
+		return bandera;
+	}
+	
+	
+
 	
 	   @javax.inject.Inject 
 	    DomainObjectContainer container;
