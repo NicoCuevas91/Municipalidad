@@ -157,6 +157,11 @@
             <artifactId>isis-core-security-shiro</artifactId>
         </dependency>
 
+        	<dependency>
+    			<groupId>org.isisaddons.module.excel</groupId>
+    			<artifactId>isis-module-excel-dom</artifactId>
+    			<version>1.11.0</version>
+			</dependency>
 
         <!-- isis core -->
         <dependency>

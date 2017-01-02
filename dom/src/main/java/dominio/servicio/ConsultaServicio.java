@@ -3,18 +3,21 @@ package dominio.servicio;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.isis.applib.DomainObjectContainer;
+import org.apache.isis.applib.annotation.CollectionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.query.QueryDefault;
 import dominio.dom.Computadora;
 import dominio.dom.Director;
 import dominio.dom.Impresora;
+import dominio.dom.Router;
 import dominio.dom.Sector;
 import dominio.dom.serv.Informe;
 
 @DomainService
 @DomainServiceLayout(menuOrder = "3", named= "Consultas")
 public class ConsultaServicio {
+
 
 
 	public List<Director> listarDirectores()
@@ -25,9 +28,10 @@ public class ConsultaServicio {
 	public List<Sector> listarSector(){
 		return container.allInstances(Sector.class);
 	}
-	
+	@CollectionLayout
 	public List<Computadora> listarComputadoras(){
 		return container.allInstances(Computadora.class);
+
 	}
 	
 	public List<Impresora> listarImpresoras(){
@@ -68,7 +72,6 @@ public class ConsultaServicio {
 		return informe;
 	}
 	
-	
 	public List<Informe> cantidadDeImpresoras(){
 		List<Informe> informe = new ArrayList<>();
 		List<Impresora> impresora = container.allInstances(Impresora.class);
@@ -90,8 +93,11 @@ public class ConsultaServicio {
 		informe.add(total);
 		return informe;
 	}
-	
+
+	public List<Router> listarRouters(){
+		return container.allInstances(Router.class);
+	}
 	
 	   @javax.inject.Inject 
-	    DomainObjectContainer container;
+	   DomainObjectContainer container;
 }

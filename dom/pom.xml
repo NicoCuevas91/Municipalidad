@@ -114,7 +114,12 @@
             <scope>test</scope>
         </dependency>
         
-        
+                	<dependency>
+    			<groupId>org.isisaddons.module.excel</groupId>
+    			<artifactId>isis-module-excel-dom</artifactId>
+    			<version>1.11.0</version>
+			</dependency>
+			
         <dependency>
 			 <groupId>org.apache.pdfbox</groupId>
   			<artifactId>pdfbox</artifactId>

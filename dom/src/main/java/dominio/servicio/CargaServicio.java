@@ -8,6 +8,7 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import dominio.dom.Computadora;
 import dominio.dom.Director;
 import dominio.dom.Impresora;
+import dominio.dom.Router;
 import dominio.dom.Sector;
 
 @DomainService
@@ -104,6 +105,29 @@ public class CargaServicio
 			return c;
 		}
 	 
+	    @MemberOrder(sequence = "4")
+	    public Router cargarRouter
+	    (
+	    		@ParameterLayout(named="Sector") Sector sector,
+	    		@ParameterLayout(named="IP" )String ip,
+	    		@ParameterLayout(named="Usuario de acceso") String user,
+	    		@ParameterLayout(named="Contraseña de acceso") String contraseña,
+	    		@ParameterLayout(named="Tiene WIFI") boolean wifi,
+	    		@ParameterLayout(named="Contraseña de wifi") String passord	
+	    )
+	    		
+	    {
+			final Router c= container.newTransientInstance(Router.class);
+			c.setSector(sector);
+			c.setContraseña(contraseña);
+			c.setIp(ip);
+			c.setWifi(wifi);
+			c.setUsuario(user);
+			c.setContraseñaWifi(passord);
+			
+			container.persistIfNotAlready(c);
+	    	return c;
+	    }
 	 
 	   @javax.inject.Inject 
 	    DomainObjectContainer container;
