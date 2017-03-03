@@ -11,6 +11,7 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.query.QueryDefault;
 import dominio.dom.Computadora;
 import dominio.dom.serv.Estado;
+import dominio.dom.serv.Id;
 import dominio.dom.serv.OrdenServicioComputadora;
 import dominio.dom.serv.Tecnicos;
 
@@ -25,7 +26,6 @@ public class OServicios
 	
 	@MemberOrder(sequence = "1")
 	public OrdenServicioComputadora ingresarOrden(
-			@ParameterLayout(named="ID")   final String id,
 			@ParameterLayout(named="Computadora")final Computadora computadora,
 			@ParameterLayout(named="Causa",multiLine = 2 ) final String causa,
 			@ParameterLayout(named="Tecnico") final Tecnicos tecnico,
@@ -34,8 +34,22 @@ public class OServicios
 			)
 	{
 		OrdenServicioComputadora os = container.newTransientInstance(OrdenServicioComputadora.class);
+		List<Id> aux = container.allInstances(Id.class);
+		Id auxId;
+		if (aux.isEmpty()){
+			auxId= container.newTransientInstance(Id.class);
+			auxId.setCodigo(0);
+			auxId.setId("2017 - ");
+			container.persistIfNotAlready(auxId);
+		}
+		else
+		{
+			auxId = aux.get(0);
+			auxId.setCodigo(auxId.getCodigo() + 1 );
+			container.persistIfNotAlready(auxId);
+		}
 		os.setCausa(causa);
-		os.setId(id);
+		os.setId(auxId.getId()+auxId.getCodigo());
 		os.setEstado(Estado.Ingreso);
 		os.setTecnico(tecnico);
 		os.setFechaIngreso( new Date());

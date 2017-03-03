@@ -118,9 +118,9 @@ public class ConfigPDF
 		fechaSalida.setTime(order.getFechaIngreso() );
 		
 		String fecha =  Integer.toString(fechaSalida.get(Calendar.DAY_OF_MONTH))+"/"+
-						Integer.toString(fechaSalida.get(Calendar.MONTH))+"/"+
+						Integer.toString(fechaSalida.get(Calendar.MONTH)+1)+"/"+
 						Integer.toString(fechaSalida.get(Calendar.YEAR));
-		
+				
 		String causa= order.getCausa();
 		String sector= order.getComputadora().getSector().getNombre();
 		String tecnico = order.getTecnico().toString();
